@@ -1,8 +1,9 @@
-import { OpenButton, Viewport } from '@components';
+import { OpenButton, Viewport, WidgetContainer } from '@components';
 
 const Main = () => (
   <Viewport>
     <OpenButton />
+    <WidgetContainer />
   </Viewport>
 );
 
