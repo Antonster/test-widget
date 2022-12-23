@@ -1,11 +1,11 @@
 import { Global } from '@emotion/react';
+import { store } from '@store/store';
+import { reset } from '@styles';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { store } from 'src/store/store';
-import { reset } from 'src/styles';
 
-import App from './app';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

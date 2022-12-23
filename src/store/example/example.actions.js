@@ -1,5 +1,5 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { exampleService } from 'src/services';
+import { exampleService } from '@services';
 
 export const setUser = createAction('example/set-user', () => ({
   payload: 'example',
