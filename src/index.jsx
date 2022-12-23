@@ -1,6 +1,6 @@
 import { Global } from '@emotion/react';
 import { store } from '@store/store';
-import { reset } from '@styles';
+import { global } from '@styles';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <Router>
-      <Global styles={reset} />
+      <Global styles={global} />
       <App />
     </Router>
   </Provider>,

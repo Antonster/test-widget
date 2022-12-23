@@ -1,1 +1,1 @@
-export { reset } from './reset/reset.styles';
+export { global } from './global/global.styles';
