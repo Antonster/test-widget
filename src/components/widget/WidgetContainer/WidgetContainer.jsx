@@ -1,13 +1,20 @@
 import { useParentSize } from '@hooks';
+import { getWidgetData } from '@store/widget/widget.actions';
 import PropTypes from 'prop-types';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 
 import * as S from './WidgetContainer.styles';
 
 const WidgetContainer = ({ children }) => {
+  const dispatch = useDispatch();
   const parentContainerRef = useRef(null);
   const size = useParentSize(parentContainerRef);
-  const parentScale = useMemo(() => (size ? size.width / 1980 : 0), [size]);
+  const parentScale = useMemo(() => (size ? size.width / 1920 : 0), [size]);
+
+  useEffect(() => {
+    dispatch(getWidgetData());
+  }, [dispatch]);
 
   return (
     <S.WidgetContainer ref={parentContainerRef} $scale={parentScale}>

@@ -8,7 +8,7 @@ import * as S from './OpenButton.styles';
 const OpenButton = ({ onOpen }) => {
   const parentContainerRef = useRef(null);
   const size = useParentSize(parentContainerRef);
-  const parentScale = useMemo(() => (size ? size.width / 1980 : 0), [size]);
+  const parentScale = useMemo(() => (size ? size.width / 1920 : 0), [size]);
 
   return (
     <S.OpenButton ref={parentContainerRef} $scale={parentScale} onClick={onOpen}>
