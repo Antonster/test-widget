@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
+import { MontserratBold, MontserratMedium, MontserratRegular, MontserratSemiBold } from '@fonts';
 
-export const reset = css`
+export const global = css`
   // Reset css
   // Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
   *:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
@@ -35,5 +36,34 @@ export const reset = css`
   // Revert the 'white-space' property for textarea elements on Safari
   textarea {
     white-space: revert;
+  }
+
+  // fonts
+  @font-face {
+    font-family: 'Montserrat';
+    src: url(${MontserratRegular});
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: url(${MontserratMedium});
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: url(${MontserratSemiBold});
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: url(${MontserratBold});
+    font-weight: 700;
+    font-style: normal;
   }
 `;

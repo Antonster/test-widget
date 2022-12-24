@@ -1,5 +1,7 @@
 /node_modules
 /build
+/dist
+/vite.config.js
 
 /.vscode
 /.eslintrc.js

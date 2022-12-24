@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import exampleReducer from './example/example.reducer';
+import widgetReducer from './widget/widget.reducer';
 
 export const store = configureStore({
   reducer: {
-    exampleReducer,
+    widget: widgetReducer,
   },
   devTools: process.env.NODE_ENV === 'development',
 });
