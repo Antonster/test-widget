@@ -16,6 +16,7 @@
   },
   "scripts": {
     "dev": "craco start",
+    "clear": "rm -rf node_modules/.cache/",
     "build": "craco build",
     "test": "craco test",
     "lint": "eslint --ext .js,.jsx src --fix",

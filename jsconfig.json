@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@images": ["./assets/images/index.js"],
+      "@fonts": ["./assets/fonts/index.js"],
+      "@components": ["./components/index.js"],
+      "@hooks": ["./hooks/index.js"],
+      "@services": ["./services/index.js"],
+      "@store/*": ["./store/*"],
+      "@styles": ["./styles/index.js"],
+      "@utils": ["./utils/index.js"],
+      "@views": ["./views/index.js"]
+    }
+  },
+  "include": ["**/*.js", "**/*.jsx"]
+}
