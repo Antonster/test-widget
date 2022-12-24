@@ -1,3 +1,5 @@
+export { default as MainButton } from './common/MainButton/MainButton';
+export { default as MainSelect } from './common/MainSelect/MainSelect';
 export { default as Viewport } from './common/Viewport/Viewport';
 export { default as OpenButton } from './widget/OpenButton/OpenButton';
 export { default as WidgetContainer } from './widget/WidgetContainer/WidgetContainer';
