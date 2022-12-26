@@ -11,10 +11,12 @@ const selectStyles = {
     border: 'none',
     width: '192px',
     height: '36px',
+    minHeight: '36px',
     padding: '0 12px 0 0',
   }),
   valueContainer: (styles) => ({
     ...styles,
+    height: '36px',
     padding: '10px 24px',
   }),
   singleValue: (styles) => ({

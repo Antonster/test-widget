@@ -70,3 +70,10 @@ export const StatusFilters = styled.div`
   justify-content: center;
   gap: 0 24px;
 `;
+
+export const MatchesList = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px 0;
+`;

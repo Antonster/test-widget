@@ -1,4 +1,4 @@
-import { MainButton, MainSelect } from '@components';
+import { MainButton, MainSelect, WidgetItem, WidgetItemEmpty } from '@components';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -11,10 +11,11 @@ const divisions = [
 
 const WidgetMatches = () => {
   const [activeDivision, setActiveDivision] = useState('1');
-  const [activeStatus, setActiveStatus] = useState();
+  const [activeFilter, setActiveFilter] = useState();
   const [selectValue, setSelectValue] = useState();
   const stages = useSelector((state) => state?.widget?.stages);
   const filters = useSelector((state) => state?.widget?.filters);
+  const matches = useSelector((state) => state?.widget?.matches);
   const selectOptions = useMemo(
     () => stages.map(({ id, title }) => ({ label: title, value: id })),
     [stages],
@@ -23,16 +24,40 @@ const WidgetMatches = () => {
     () => filters.map(({ title, name }) => ({ label: title, value: name })),
     [filters],
   );
+  const activeList = useMemo(() => {
+    if (activeFilter) {
+      const list = activeFilter.matches.map((matchId) =>
+        matches.find((match) => match.id === matchId),
+      );
+
+      while (list.length > 0 && list.length < 5) {
+        list.push({ id: list.length, status: 'empty' });
+      }
+
+      return list;
+    }
+
+    return undefined;
+  }, [activeFilter, matches]);
 
   useEffect(() => {
-    if (!activeStatus) {
-      const active = filters.find((item) => item.default).name;
+    if (!activeFilter) {
+      const active = filters.find((item) => item.default);
 
-      setActiveStatus(active);
+      setActiveFilter(active);
     }
   }, [filters]);
 
   const onChangeSelectValue = useCallback((value) => setSelectValue(value), []);
+
+  const onChangeActiveFilter = useCallback(
+    (value) => {
+      const active = filters.find((item) => item.name === value);
+
+      setActiveFilter(active);
+    },
+    [filters],
+  );
 
   return (
     <>
@@ -69,11 +94,33 @@ const WidgetMatches = () => {
             key={value}
             label={label}
             value={value}
-            active={value === activeStatus}
-            onClick={() => setActiveStatus(value)}
+            active={value === activeFilter?.name}
+            onClick={() => onChangeActiveFilter(value)}
           />
         ))}
       </S.StatusFilters>
+
+      <S.MatchesList>
+        {activeList?.map(({ id, stageId, boType, status, startAt, teams, channel, title }) => {
+          if (status === 'empty') {
+            return <WidgetItemEmpty key={id} />;
+          }
+
+          return (
+            <WidgetItem
+              key={id}
+              id={id}
+              stageId={stageId}
+              boType={boType}
+              status={status}
+              startAt={startAt}
+              teams={teams}
+              channel={channel}
+              title={title}
+            />
+          );
+        })}
+      </S.MatchesList>
     </>
   );
 };
