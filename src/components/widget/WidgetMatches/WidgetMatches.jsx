@@ -101,7 +101,7 @@ const WidgetMatches = () => {
       </S.StatusFilters>
 
       <S.MatchesList>
-        {activeList?.map(({ id, stageId, boType, status, startAt, teams, channel, title }) => {
+        {activeList?.map(({ id, status, startAt, teams, channel, title }) => {
           if (status === 'empty') {
             return <WidgetItemEmpty key={id} />;
           }
@@ -109,9 +109,6 @@ const WidgetMatches = () => {
           return (
             <WidgetItem
               key={id}
-              id={id}
-              stageId={stageId}
-              boType={boType}
               status={status}
               startAt={startAt}
               teams={teams}

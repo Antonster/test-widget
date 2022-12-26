@@ -7,7 +7,7 @@ import { useTimer } from 'react-timer-hook';
 
 import * as S from './WidgetItem.styles';
 
-const WidgetItem = ({ id, stageId, boType, status, startAt, teams, channel, title }) => {
+const WidgetItem = ({ status, startAt, teams, channel, title }) => {
   const { seconds, minutes, hours, days, isRunning } = useTimer({
     expiryTimestamp: dayjs(startAt).valueOf(),
   });
@@ -75,9 +75,6 @@ const WidgetItem = ({ id, stageId, boType, status, startAt, teams, channel, titl
 };
 
 WidgetItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  stageId: PropTypes.number.isRequired,
-  boType: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   startAt: PropTypes.string.isRequired,
   teams: PropTypes.arrayOf(

@@ -5,6 +5,7 @@ export const FiltersWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 0 24px;
+  padding: 0 24px;
 `;
 
 export const RegionFilter = styled.div`
@@ -64,16 +65,37 @@ export const DivisionButton = styled.button`
 `;
 
 export const StatusFilters = styled.div`
-  padding: 24px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0 24px;
+  padding: 24px;
 `;
 
 export const MatchesList = styled.div`
   width: 100%;
+  height: 576px;
   display: flex;
   flex-direction: column;
   gap: 4px 0;
+  padding: 0 20px 0 24px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ee2737;
+    border-radius: 4px;
+  }
 `;
