@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@images": ["./src/assets/images/index.js"],
-      "@components": ["./src/components/index.js"],
-      "@data": ["./src/data/index.js"],
-      "@hooks": ["./src/hooks/index.js"],
-      "@services": ["./src/services/index.js"],
-      "@store": ["./src/store/index.js"],
-      "@styles": ["./src/styles/index.js"],
-      "@utils": ["./src/utils/index.js"],
-      "@views": ["./src/views/index.js"]
+      "@images": ["./assets/images/index.js"],
+      "@fonts": ["./assets/fonts/index.js"],
+      "@components": ["./components/index.js"],
+      "@hooks": ["./hooks/index.js"],
+      "@services": ["./services/index.js"],
+      "@store/*": ["./store/*"],
+      "@styles": ["./styles/index.js"],
+      "@utils": ["./utils/index.js"],
+      "@views": ["./views/index.js"]
     }
-  }
+  },
+  "include": ["**/*.js", "**/*.jsx"]
 }
