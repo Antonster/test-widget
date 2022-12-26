@@ -12,23 +12,33 @@ const divisions = [
 const WidgetMatches = () => {
   const [activeDivision, setActiveDivision] = useState('1');
   const [activeFilter, setActiveFilter] = useState();
-  const [selectValue, setSelectValue] = useState();
+  const [stagesValue, setStagesValue] = useState();
   const stages = useSelector((state) => state?.widget?.stages);
   const filters = useSelector((state) => state?.widget?.filters);
   const matches = useSelector((state) => state?.widget?.matches);
+
   const selectOptions = useMemo(
-    () => stages.map(({ id, title }) => ({ label: title, value: id })),
+    () => [
+      { label: 'All', value: '' },
+      ...stages.map(({ id, title }) => ({ label: title, value: id })),
+    ],
     [stages],
   );
+
   const statuses = useMemo(
     () => filters.map(({ title, name }) => ({ label: title, value: name })),
     [filters],
   );
+
   const activeList = useMemo(() => {
     if (activeFilter) {
-      const list = activeFilter.matches.map((matchId) =>
+      let list = activeFilter.matches.map((matchId) =>
         matches.find((match) => match.id === matchId),
       );
+
+      if (stagesValue?.value) {
+        list = list.filter(({ stageId }) => stageId === stagesValue.value);
+      }
 
       while (list.length > 0 && list.length < 5) {
         list.push({ id: list.length, status: 'empty' });
@@ -38,7 +48,7 @@ const WidgetMatches = () => {
     }
 
     return undefined;
-  }, [activeFilter, matches]);
+  }, [activeFilter, matches, stagesValue]);
 
   useEffect(() => {
     if (!activeFilter) {
@@ -48,7 +58,7 @@ const WidgetMatches = () => {
     }
   }, [filters]);
 
-  const onChangeSelectValue = useCallback((value) => setSelectValue(value), []);
+  const onChangeStagesValue = useCallback((value) => setStagesValue(value), []);
 
   const onChangeActiveFilter = useCallback(
     (value) => {
@@ -67,8 +77,8 @@ const WidgetMatches = () => {
           <MainSelect
             options={selectOptions}
             placeholder="Region Select"
-            value={selectValue}
-            onChange={onChangeSelectValue}
+            value={stagesValue}
+            onChange={onChangeStagesValue}
           />
         </S.RegionFilter>
 
