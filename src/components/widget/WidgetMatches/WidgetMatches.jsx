@@ -1,8 +1,12 @@
 import { MainButton, MainSelect, WidgetItem, WidgetItemEmpty } from '@components';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import * as S from './WidgetMatches.styles';
+
+dayjs.extend(duration);
 
 const divisions = [
   { label: 'I', value: '1' },
@@ -40,11 +44,38 @@ const WidgetMatches = () => {
         list = list.filter(({ stageId }) => stageId === stagesValue.value);
       }
 
-      while (list.length > 0 && list.length < 5) {
-        list.push({ id: list.length, status: 'empty' });
+      const listWithDuration = [];
+
+      list.forEach((match) => {
+        const firstDelta = Math.abs(dayjs(match.startAt) - dayjs(list.at(0).startAt));
+        const oneWeek = 1000 * 60 * 60 * 24 * 7;
+
+        if (
+          listWithDuration.length > 0 &&
+          Math.abs(dayjs(match.startAt) - dayjs(listWithDuration.at(-1).startAt)) > oneWeek
+        ) {
+          const months = dayjs.duration(firstDelta).asMonths();
+          const fullMonths = Number(`${months}`.split('.')[0]);
+          const weeks = dayjs.duration(Number(`0.${`${months}`.split('.')[1]}`), 'M').asWeeks();
+          const fullWeeks = Number(`${weeks}`.split('.')[0]);
+
+          listWithDuration.push({
+            id: listWithDuration.length,
+            status: 'date',
+            delta: `${fullMonths ? `Month ${fullMonths}` : ''} ${
+              fullMonths && fullWeeks ? '/' : ''
+            } ${fullWeeks ? `Week ${fullWeeks}` : ''}`,
+          });
+        }
+
+        listWithDuration.push(match);
+      });
+
+      while (listWithDuration.length > 0 && listWithDuration.length < 5) {
+        listWithDuration.push({ id: listWithDuration.length, status: 'empty' });
       }
 
-      return list;
+      return listWithDuration;
     }
 
     return undefined;
@@ -112,9 +143,13 @@ const WidgetMatches = () => {
 
       {activeList && activeList.length > 0 && (
         <S.MatchesList>
-          {activeList.map(({ id, status, startAt, teams, channel, title }) => {
+          {activeList.map(({ id, status, startAt, teams, channel, title, delta }) => {
             if (status === 'empty') {
               return <WidgetItemEmpty key={id} />;
+            }
+
+            if (status === 'date') {
+              return <S.DateSeparator key={id}>{delta}</S.DateSeparator>;
             }
 
             return (

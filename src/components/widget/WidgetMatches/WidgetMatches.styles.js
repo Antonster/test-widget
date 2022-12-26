@@ -101,6 +101,20 @@ export const MatchesList = styled.div`
   }
 `;
 
+export const DateSeparator = styled.div`
+  width: 100%;
+  padding: 24px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.004em;
+  color: #75787b;
+`;
+
 export const EmptyList = styled.div`
   width: 476px;
   height: 476px;
