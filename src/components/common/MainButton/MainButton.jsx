@@ -4,9 +4,9 @@ import { memo } from 'react';
 import * as S from './MainButton.styles';
 
 const MainButton = ({ label, value, active, onClick }) => (
-  <S.StatusButton key={value} $active={active} onClick={onClick}>
+  <S.MainButton key={value} $active={active} onClick={onClick}>
     {label}
-  </S.StatusButton>
+  </S.MainButton>
 );
 
 MainButton.propTypes = {

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
-export const StatusButton = styled.button`
-  padding: 6px 24px;
+export const MainButton = styled.button`
+  padding: 5px 24px;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
