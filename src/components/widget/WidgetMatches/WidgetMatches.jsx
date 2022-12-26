@@ -100,24 +100,35 @@ const WidgetMatches = () => {
         ))}
       </S.StatusFilters>
 
-      <S.MatchesList>
-        {activeList?.map(({ id, status, startAt, teams, channel, title }) => {
-          if (status === 'empty') {
-            return <WidgetItemEmpty key={id} />;
-          }
+      {activeList && activeList.length > 0 && (
+        <S.MatchesList>
+          {activeList.map(({ id, status, startAt, teams, channel, title }) => {
+            if (status === 'empty') {
+              return <WidgetItemEmpty key={id} />;
+            }
 
-          return (
-            <WidgetItem
-              key={id}
-              status={status}
-              startAt={startAt}
-              teams={teams}
-              channel={channel}
-              title={title}
-            />
-          );
-        })}
-      </S.MatchesList>
+            return (
+              <WidgetItem
+                key={id}
+                status={status}
+                startAt={startAt}
+                teams={teams}
+                channel={channel}
+                title={title}
+              />
+            );
+          })}
+        </S.MatchesList>
+      )}
+
+      {activeList && activeList.length === 0 && (
+        <S.EmptyList>
+          <S.EmptyMessage>
+            <S.EmptyMessageTitle>No matches!</S.EmptyMessageTitle>
+            <S.EmptyMessageText>{activeFilter?.hints.noMatches.description}</S.EmptyMessageText>
+          </S.EmptyMessage>
+        </S.EmptyList>
+      )}
     </>
   );
 };

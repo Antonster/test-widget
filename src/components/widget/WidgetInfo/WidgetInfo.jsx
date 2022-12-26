@@ -1,5 +1,5 @@
 import * as S from './WidgetInfo.styles';
 
-const WidgetInfo = () => <div>info</div>;
+const WidgetInfo = () => <div />;
 
 export default WidgetInfo;

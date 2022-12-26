@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { buttonsBackgroundSvg } from '@images';
 
 export const FiltersWrapper = styled.div`
   display: flex;
@@ -98,4 +99,47 @@ export const MatchesList = styled.div`
     background: #ee2737;
     border-radius: 4px;
   }
+`;
+
+export const EmptyList = styled.div`
+  width: 476px;
+  height: 476px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: url(${buttonsBackgroundSvg}) no-repeat center center / cover;
+  margin: 32px 0 0;
+`;
+
+export const EmptyMessage = styled.div`
+  margin: 144px 0 0;
+`;
+
+export const EmptyMessageTitle = styled.div`
+  width: 138px;
+  padding: 4px 16px;
+  background: #1d1f2a;
+  border-radius: 4px 4px 0px 0px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.004em;
+  color: #b8b8bd;
+`;
+
+export const EmptyMessageText = styled.div`
+  width: 138px;
+  padding: 8px;
+  background: #303038;
+  border: 1px solid #1d1f2a;
+  border-radius: 0px 0px 4px 4px;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.004em;
+  color: #75787b;
 `;

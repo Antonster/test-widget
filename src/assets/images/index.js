@@ -1,3 +1,4 @@
+export { default as buttonsBackgroundSvg } from './buttons-background.svg';
 export { default as iconCloseSvg } from './icon-close.svg';
 export { default as iconVsSvg } from './icon-vs.svg';
 export { default as logoSvg } from './logo.svg';
