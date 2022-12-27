@@ -1,5 +1,6 @@
 import { iconCloseSvg, logoFullSvg } from '@images';
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 
 import * as S from './WidgetHeader.styles';
 
@@ -38,4 +39,4 @@ WidgetHeader.propTypes = {
   ),
 };
 
-export default WidgetHeader;
+export default memo(WidgetHeader);

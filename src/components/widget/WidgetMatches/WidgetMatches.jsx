@@ -104,10 +104,10 @@ const WidgetMatches = () => {
     <>
       <S.FiltersWrapper>
         <S.RegionFilter>
-          <S.FilterTitle>Region:</S.FilterTitle>
+          <S.FilterTitle>Stage:</S.FilterTitle>
           <MainSelect
             options={selectOptions}
-            placeholder="Region Select"
+            placeholder="Stage Select"
             value={stagesValue}
             onChange={onChangeStagesValue}
           />

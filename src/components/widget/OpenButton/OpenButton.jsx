@@ -1,7 +1,7 @@
 import { useParentSize } from '@hooks';
 import { logoSvg } from '@images';
 import PropTypes from 'prop-types';
-import { useMemo, useRef } from 'react';
+import { memo, useMemo, useRef } from 'react';
 
 import * as S from './OpenButton.styles';
 
@@ -21,4 +21,4 @@ OpenButton.propTypes = {
   onOpen: PropTypes.func.isRequired,
 };
 
-export default OpenButton;
+export default memo(OpenButton);
